@@ -1,6 +1,7 @@
-def display_solution(grid, placed_blocks):
+def display_solution(grid, placed_blocks, file=None):
     """
     Display the solved puzzle grid and placed blocks in a user-friendly format.
+    If file is provided, writes output to it.
     """
     # Input validation
     assert isinstance(grid, list), "Grid must be a 2D list"
@@ -8,27 +9,29 @@ def display_solution(grid, placed_blocks):
            all(len(item) == 2 for item in placed_blocks)), \
            "Placed blocks must be a list of (position, block_type) tuples"
     
-    print("\n=== SOLUTION ===")
-    
-    # Display grid (compressed view)
-    print("Final Grid Layout:")
+    def write_or_print(text=""):
+        if file:
+            print(text, file=file)
+        else:
+            print(text)
+
+    write_or_print("\n=== SOLUTION ===")
+    write_or_print("Final Grid Layout:")
     for y in range(1, len(grid), 2):
         row = []
         for x in range(1, len(grid[y]), 2):
             cell = grid[y][x]
             row.append(str(cell) if cell != 0 else '.')
-        print(' '.join(row))
-    
-    # Display placed blocks with numbering
-    print("\nPlaced Blocks:")
+        write_or_print(' '.join(row))
+
+    write_or_print("\nPlaced Blocks:")
     for i, (pos, block_type) in enumerate(placed_blocks, 1):
         x, y = pos
-        print(f"{i}. Block {block_type} at ({x//2 + 1}, {y//2 + 1})")
-    
-    # Calculate and display coverage statistics
+        write_or_print(f"{i}. Block {block_type} at ({x//2 + 1}, {y//2 + 1})")
+
     total_blocks = len(placed_blocks)
     unique_blocks = len({block_type for _, block_type in placed_blocks})
-    print(f"\nSummary: Placed {total_blocks} blocks ({unique_blocks} unique types)")
+    write_or_print(f"\nSummary: Placed {total_blocks} blocks ({unique_blocks} unique types)")
 
 def place_block(block_type, position, grid):
     """

@@ -20,12 +20,20 @@ def solve_puzzle():
         if not solution:
             # Fall back to brute force if smart fails
             solution = brute_force_solution(puzzle_file)
-        
+
+        # inside solve_puzzle() where `display_solution` is called:
         if solution:
             end_time = time.time()
             grid, placed_blocks = solution
-            display_solution(grid, placed_blocks)
-            print(f"\nPuzzle solved in {end_time - start_time:.2f} seconds")
+
+            # Define output filename
+            output_file = puzzle_file.replace('.bff', '_solution.bff')
+            
+            with open(output_file, 'w') as f:
+                display_solution(grid, placed_blocks, file=f)
+                f.write(f"\nPuzzle solved in {end_time - start_time:.2f} seconds\n")
+            
+            print(f"\nSolution saved to {output_file}")
             return True
         else:
             print("\nFailed to solve the puzzle")
@@ -37,3 +45,4 @@ def solve_puzzle():
 
 if __name__ == '__main__':
     solve_puzzle()
+    

@@ -1,0 +1,16 @@
+
+=== SOLUTION ===
+Final Grid Layout:
+o o C o
+o o o A
+A o o o
+o o o o
+
+Placed Blocks:
+1. Block A at (4, 2)
+2. Block C at (3, 1)
+3. Block A at (1, 3)
+
+Summary: Placed 3 blocks (2 unique types)
+
+Puzzle solved in 22.79 seconds
