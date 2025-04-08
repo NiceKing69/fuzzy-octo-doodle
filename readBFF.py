@@ -51,6 +51,7 @@ class LazorGame:
         print("\nBlocks:", self.blocks)
         print("\nLasers:", self.lasers)
         print("\nTargets:", self.targets)
+        print('\n')
 
 # Example Usage
 lazor_game = LazorGame("mad_1.bff")
