@@ -37,7 +37,7 @@ A Python implementation to solve Lazor puzzle games by simulating laser paths an
 1. Reads a puzzle file in .bff format
 2. Expands the grid to allow for laser path simulation
 3. Attempts solutions
-4. Displays the solution grid and block placements
+4. write a BFF file for the solution grid and block placements
 
 ## Usage
 
