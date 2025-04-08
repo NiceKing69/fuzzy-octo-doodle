@@ -44,6 +44,7 @@ class LazorGame:
                 _, x, y = line.split()
                 self.targets.append((int(x), int(y)))
 
+# define the display information function
     def display_info(self):
         print("Grid:")
         for row in self.grid:
@@ -51,6 +52,9 @@ class LazorGame:
         print("\nBlocks:", self.blocks)
         print("\nLasers:", self.lasers)
         print("\nTargets:", self.targets)
+        print('\n')
+
+
 
 # Example Usage
 lazor_game = LazorGame("mad_1.bff")
